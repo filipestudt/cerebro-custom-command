@@ -1,5 +1,5 @@
 # cerebro-custom-command
-> A simple plugin to create custom commands to Cerebro App only editing a JSON file
+A simple plugin to create custom commands to Cerebro only editing a JSON file
 
 ## Usage
 
@@ -16,4 +16,3 @@ Maybe to work on linux it will be necessary edit this code and change the folder
 ## Related
 
 * [Cerebro](http://github.com/KELiON/cerebro) – main repo for Cerebro app;
-* [Git.io](https://git.io/) – the reason this exists.
