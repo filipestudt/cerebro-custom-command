@@ -1,5 +1,7 @@
 {
-  "name": "my-plugin",
+  "name": "command-maker",
+  "author": "Filipe Studt",
+  "repository": "https://github.com/filipestudt/cerebro-custom-command",
   "version": "0.1.0",
   "dependencies": {
     "cerebro-tools": "^0.1.8",
@@ -12,7 +14,9 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "command",
+    "create"
   ],
   "scripts": {
     "start": "cerebro-scripts start",
