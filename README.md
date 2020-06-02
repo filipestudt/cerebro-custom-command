@@ -1,5 +1,5 @@
 # cerebro-custom-command
-> It is a pretty simple plugin to create custom commands to Cerebro App only editing a JSON file
+> A simple plugin to create custom commands to Cerebro App only editing a JSON file
 
 ## Usage
 
