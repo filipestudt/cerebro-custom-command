@@ -6,7 +6,18 @@ A simple plugin to create custom commands to Cerebro only editing a JSON file
 * Create a file in %appdata%/cerebro-plugin-commandmaker/config.json
 * In the file add your commands
 
-![](screenshot1.png)
+```
+{    
+    "commands": [
+        {
+            "name": "Lo-Fi Playlist",
+            "icon": "C:/path-to-icon/youtube-icon.png",
+            "exec": "start chrome https://www.youtube.com/watch?v=Rhomn5Um9dg&list=RDRhomn5Um9dg&start_radio=1&t=0"
+        }
+    ]
+
+}
+```
 
 Now when you search a term and it matches one of the commands name, it will show. You can also add a icon! When selected, it will execute the specified command on the cmd(on Windows). Not tested on any other systems.
 Maybe to work on linux it will be necessary edit this code and change the folder from %appdata% to home or another system folder.
@@ -15,7 +26,7 @@ Maybe to work on linux it will be necessary edit this code and change the folder
 
 ## Examples of commands to make
 
-> The code examples are only for Windows, but can be changed to make the example work in any system
+> This code examples are only for Windows, but can be changed to make the example work in any system
 
 * Open a folder (favorite folder, project)
 ```
