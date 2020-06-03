@@ -51,7 +51,7 @@ Maybe to work on linux it will be necessary edit this code and change the folder
 
 ## Possible troubleshooting
 
-If you are on Windows an want a command that open the explorer in some folder using the ```explorer /e, C:\path```, you will have to use double bars to specify the path, for example: ```C:\\Users\\YourName\\Documents```.
+If you are on Windows and want a command that open the explorer in some folder using the ```explorer /e, C:\path```, you will have to use double bars to specify the path, for example: ```C:\\Users\\YourName\\Documents```.
 Here is how it will be the full command in the config.json:
 ```
 {
