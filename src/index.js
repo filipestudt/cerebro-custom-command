@@ -1,7 +1,15 @@
+import Preview from './Preview'
+
 var fs = require('fs')
 var cmd = require('node-cmd')
 
-export const fn = ({ term, display}) => {
+export const fn = ({ term, display, actions}) => {
+
+  var exec = (command) => {
+    cmd.run(command);
+    actions.hideWindow();
+  }
+
   var search = (searchTerm) => {
     fs.readFile(process.env.APPDATA + '/cerebro-plugin-commandmaker/config.json', 'utf-8', (err, data) => {
       let obj = JSON.parse(data);
@@ -12,7 +20,8 @@ export const fn = ({ term, display}) => {
             display({
               icon,
               title: command.name,
-              onSelect: () => cmd.run(command.exec)
+              onSelect: () => exec(command.exec),
+              getPreview: () => <Preview data={command.options || []} exec={exec} />
             })
           }          
         }
