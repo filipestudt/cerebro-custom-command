@@ -15,7 +15,8 @@ export const fn = ({ term, display, actions}) => {
       let obj = JSON.parse(data);
       if (obj.commands.length > 0) {
         for (let command of obj.commands) {
-          if (command.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+          if ( command.keywords && command.keywords.join('').toLowerCase().includes(searchTerm.toLowerCase())
+              || command.name.toLowerCase().includes(searchTerm.toLowerCase())) {
             let icon = command.icon;
             display({
               icon,
