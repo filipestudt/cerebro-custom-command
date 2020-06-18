@@ -19,9 +19,32 @@ export default class extends Component {
                 </KeyboardNav>
             </div>
         )
-    }    
+    } 
+
+    renderForm(exec, data) {
+        /**
+         * Made the handleChange inside this function because the setState isn't working in the plugin
+         */
+        var handleInputChange = (event) => {
+            exec(event.target.value)
+        }
+        
+        return (
+            <div className={styles.wrapper}>                          
+                Path to the .json config file:
+                <input type="text" 
+                    value={data} 
+                    placeholder="ex: C:/User/Documents/config.json" 
+                    onChange={handleInputChange.bind(this)}>
+                </input>
+            </div>
+        )
+    }
 
     render() {
-       return this.renderItems(this.props.data, this.props.exec);
+        if (this.props.type === 'form') {
+            return this.renderForm(this.props.exec, this.props.data);
+        }
+        return this.renderItems(this.props.data, this.props.exec);
     }
 }

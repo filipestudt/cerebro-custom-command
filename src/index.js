@@ -1,13 +1,43 @@
 import Preview from './Preview'
 import fs from 'fs'
-
-var cmd = require('node-cmd')
+const cmd = require('node-cmd')
+const configKeywords = ['settings', 'configure', 'custom', 'command']
 
 export const fn = ({ term, display, actions}) => {
   /**
+   * Load the json path, if it's expecified
+   */
+  var jsonPath = localStorage.getItem('jsonPath');
+
+  var setPath = (path) => {
+    /**
+     * Using the localStorage to save the json path of the user
+     */
+    localStorage.setItem('jsonPath', path);
+    jsonPath = path;
+  }  
+
+  /**
+   * Load the settings of the plugin
+   */
+  if (configKeywords.join('').includes(term.toLowerCase())) {
+    display({
+      title: 'Custom commands plugin settings',
+      getPreview: () => <Preview type="form" exec={setPath} data={jsonPath} />
+    })   
+  }
+
+  /**
    * Get the JSON with the commands and parse
    */
-  let _data = fs.readFileSync(process.env.APPDATA + '/cerebro-plugin-commandmaker/config.json', 'utf-8');
+  var _data;
+  if (jsonPath) {
+    _data = fs.readFileSync(jsonPath, 'utf-8');
+  }
+  else {
+    _data = fs.readFileSync(process.env.APPDATA + '/cerebro-custom-command/config.json', 'utf-8');
+  }
+
   var data = JSON.parse(_data);
 
   if (!data || data.commands.length === 0) return;
@@ -42,4 +72,6 @@ export const fn = ({ term, display, actions}) => {
     cmd.run(command);
     actions.hideWindow();
   }
+
+  
 }
