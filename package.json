@@ -2,7 +2,7 @@
   "name": "command-maker",
   "author": "Filipe Studt",
   "repository": "https://github.com/filipestudt/cerebro-custom-command",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "dependencies": {
     "cerebro-tools": "^0.1.8",
     "cerebro-ui": "^0.0.16",

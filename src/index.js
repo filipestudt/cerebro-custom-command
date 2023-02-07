@@ -1,9 +1,10 @@
-import Preview from './Preview'
-import fs from 'fs'
-const cmd = require('node-cmd')
-const configKeywords = ['settings', 'configure', 'custom', 'command']
+import Preview from './Preview';
+import Settings from './Settings';
+import fs from 'fs';
+const cmd = require('node-cmd');
+const configKeywords = ['settings', 'configure', 'custom', 'command'];
 
-export const fn = ({ term, display, actions}) => {
+export const fn = ({ term, display, actions }) => {
   /**
    * Load the json path, if it's expecified
    */
@@ -15,7 +16,7 @@ export const fn = ({ term, display, actions}) => {
      */
     localStorage.setItem('jsonPath', path);
     jsonPath = path;
-  }  
+  }
 
   /**
    * Load the settings of the plugin
@@ -23,8 +24,8 @@ export const fn = ({ term, display, actions}) => {
   if (configKeywords.join('').includes(term.toLowerCase())) {
     display({
       title: 'Custom commands plugin settings',
-      getPreview: () => <Preview type="form" exec={setPath} data={jsonPath} />
-    })   
+      getPreview: () => <Settings exec={setPath} data={jsonPath} />
+    })
   }
 
   /**
@@ -41,14 +42,14 @@ export const fn = ({ term, display, actions}) => {
   var data = JSON.parse(_data);
 
   if (!data || data.commands.length === 0) return;
-  
+
   data.commands.forEach(command => {
     /**
      * If the term in cerebro matches one of the keywords or the command name, 
      * then show the command
      */
-    if ( command.keywords && command.keywords.join('').toLowerCase().includes(term.toLowerCase())
-          || command.name.toLowerCase().includes(term.toLowerCase())) {      
+    if (command.keywords && command.keywords.join('').toLowerCase().includes(term.toLowerCase())
+      || command.name.toLowerCase().includes(term.toLowerCase())) {
       let icon = command.icon;
       /**
        * The preview will load the others options of commands to execute,
@@ -59,7 +60,7 @@ export const fn = ({ term, display, actions}) => {
         title: command.name,
         onSelect: () => exec(command.exec),
         getPreview: () => <Preview data={command.options || []} exec={exec} />
-      })    
+      })
     }
   });
 
@@ -72,6 +73,4 @@ export const fn = ({ term, display, actions}) => {
     cmd.run(command);
     actions.hideWindow();
   }
-
-  
 }
