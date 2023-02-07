@@ -4,6 +4,9 @@ A simple plugin to create custom commands to Cerebro only editing a JSON file
 ## Usage
 
 * Type settings on cerebro and set a path for a .json file for the commands
+
+![](screenshot5.png)
+
 * If the path isn't expecified, the plugin will look for the .json in this path: %appdata%/cerebro-custom-command/config.json
 * In this file add your commands, example of the syntax for a command to open a playlist
 
